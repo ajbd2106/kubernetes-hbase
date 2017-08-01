@@ -1,0 +1,36 @@
+id: zookeeper
+kind: Pod
+apiVersion: v1beta1
+desiredState: 
+ manifest: 
+  version: v1beta1
+  id: zookeeper
+  containers: 
+   - 
+   name: zookeeper
+    image: "bioshrek/zookeeper:cdh5"
+    ports: 
+     - 
+   containerPort: 2181
+      hostPort: 2181
+    imagePullPolicy: PullNever
+    volumeMounts: 
+     - 
+   name: "zookeeper-log-dir"
+      mountPath: "/home/chianyu/shared_with_docker_container/zookeeper-log-dir"
+     - 
+   name: "zookeeper-data-dir"
+      mountPath: "/home/chianyu/shared_with_docker_container/zookeeper"
+  volumes: 
+   - 
+   name: "zookeeper-log-dir"
+    source: 
+     hostDir: 
+      path: "/home/chianyu/shared_with_docker_container/zookeeper-log-dir"
+   - 
+   name: "zookeeper-data-dir"
+    source: 
+     hostDir: 
+      path: "/home/chianyu/shared_with_docker_container/zookeeper"
+labels: 
+ name: zookeeper

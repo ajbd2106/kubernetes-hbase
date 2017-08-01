@@ -1,0 +1,38 @@
+id: hbaseRegionserverController
+kind: ReplicationController
+apiVersion: v1beta1
+desiredState: 
+ replicas: 2
+ replicaSelector: 
+  name: "hbase-regionserver"
+ podTemplate: 
+  desiredState: 
+   manifest: 
+    version: v1beta1
+    id: "hbase-regionserver"
+    containers: 
+     - 
+   name: "hbase-regionserver"
+      image: "bioshrek/hbase-regionserver:cdh5"
+      ports: 
+       - 
+   containerPort: 60020
+        hostPort: 60020
+       - 
+   containerPort: 60030
+        hostPort: 60030
+      imagePullPolicy: PullNever
+      volumeMounts: 
+       - 
+   name: "hbase-log-dir"
+        mountPath: "/home/chianyu/shared_with_docker_container/hbase-log-dir"
+    volumes: 
+     - 
+   name: "hbase-log-dir"
+      source: 
+       hostDir: 
+        path: "/home/chianyu/shared_with_docker_container/hbase-log-dir"
+  labels: 
+   name: "hbase-regionserver"
+labels: 
+ name: "hbase-regionserver"
